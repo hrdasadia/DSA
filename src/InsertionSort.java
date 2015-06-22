@@ -1,5 +1,12 @@
 import java.util.Arrays;
 
+//start from index 1 and check backwards for 'right' place to insert
+//Better than selection and bubble sort
+/*
+ * Adaptive, i.e., efficient for data sets that are already substantially sorted: 
+ * the time complexity is O(nk) when each element in the input is no more than k places away from its sorted position
+ * Stable & in place
+ */
 
 public class InsertionSort {
 
@@ -11,18 +18,17 @@ public class InsertionSort {
 	}
 
 	private static void insertionSort(int[] arr) {
-
 		for(int i=1;i<arr.length;i++){
 			int current = arr[i];
 			for(int j=i-1;j>=0;j--){
 				if(arr[j] > current){
 					arr[j+1] = arr[j];
 					arr[j] = current;
+				}else{
+					break;
 				}
-			}
-			
+			}	
 		}
-		
 	}
-
+	
 }

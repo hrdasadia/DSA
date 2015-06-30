@@ -12,32 +12,32 @@ public class MergeSort {
 	}
 
 	private static void mergeSort(int[] arr) {
-		if(arr!=null && arr.length>=2){
+		if(arr!=null && arr.length>1){
 			int start = 0;
 			int end = arr.length-1;
-			divide(0,(start+end)/2,arr);
-			divide((start+end)/2+1,end,arr);
-		
+			int middle = (start+end)/2;
+			divide(start,end,middle,arr);
 		}
 	}
 
-	private static void divide(int start, int end, int[] arr) {
+	private static void divide(int start, int end, int middle, int[] arr) {
 		if(start < end){
-			divide(start,(start+end)/2,arr);
-			divide((start+end)/2+1,end,arr);
+			divide(start,middle,(start+middle)/2,arr);
+			divide(middle+1,end,(middle+1+end)/2,arr);
+			merge(start,end,middle,arr);
 		}
-		merge(start,end,arr);
+		
 	}
 
-	private static void merge(int start, int end, int[] arr) {
+	private static void merge(int start, int end, int middle, int[] arr) {
 		if(start<end){
 			for(int i=start;i<=end;i++){
 				temp[i] = arr[i];
 			}
 			int i=start;
-			int j=((start+end)/2)+1;
+			int j=middle+1;
 			int filler = start;		
-			while(i<=j && j<=end){
+			while(i<=middle && j<=end){
 				if(arr[i]>arr[j]){
 					arr[filler] = temp[j];
 					j++;
@@ -47,13 +47,11 @@ public class MergeSort {
 				}
 				filler++;
 			}
-			while(i<=j){
+			while(i<=middle){
 				arr[filler] = temp[i];
 				i++;
 				filler++;
 			}
 		}
-		
-		
 	}
 }

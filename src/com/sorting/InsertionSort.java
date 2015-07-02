@@ -1,3 +1,4 @@
+package com.sorting;
 import java.util.Arrays;
 
 //start from index 1 and check backwards for 'right' place to insert

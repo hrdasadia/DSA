@@ -1,3 +1,4 @@
+package com.sorting;
 import java.util.Arrays;
 
 //swap the least element with first element
